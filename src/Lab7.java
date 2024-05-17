@@ -11,7 +11,7 @@ import java.util.UUID;
 /**
  * Простий текстовий редактор з можливістю збереження резервних копій файлів.
  */
-public class TextEditor extends JFrame implements ActionListener {
+public class Lab7 extends JFrame implements ActionListener {
     private JTextArea textArea;
     private JTextField backupLocationField;
     private JTextField numberOfCopiesField;
@@ -19,9 +19,9 @@ public class TextEditor extends JFrame implements ActionListener {
     /**
      * Конструктор для створення вікна текстового редактора.
      */
-    public TextEditor() {
-        setTitle("Text Editor");
-        setSize(700, 500);
+    public Lab7() {
+        setTitle("Текстовий редактор");
+        setSize(750, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -33,15 +33,15 @@ public class TextEditor extends JFrame implements ActionListener {
         // Додавання панелі з полями введення та кнопкою збереження
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         backupLocationField = new JTextField(20);
-        backupLocationField.setToolTipText("Enter backup location"); // Підказка для поля розташування резервних копій
+        backupLocationField.setToolTipText("Введіть місце резервного копіювання"); // Підказка для поля розташування резервних копій
         numberOfCopiesField = new JTextField(5);
-        numberOfCopiesField.setToolTipText("Enter number of copies"); // Підказка для поля кількості копій
+        numberOfCopiesField.setToolTipText("Введіть кількість копій"); // Підказка для поля кількості копій
 
-        JButton saveButton = new JButton("Save");
+        JButton saveButton = new JButton("Зберегти");
         saveButton.addActionListener(this);
-        bottomPanel.add(new JLabel("Backup Location:"));
+        bottomPanel.add(new JLabel("Розташування резервної копії:"));
         bottomPanel.add(backupLocationField);
-        bottomPanel.add(new JLabel("Number of Copies:"));
+        bottomPanel.add(new JLabel("Кількість копій:"));
         bottomPanel.add(numberOfCopiesField);
         bottomPanel.add(saveButton);
 
@@ -53,7 +53,7 @@ public class TextEditor extends JFrame implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("Save")) {
+        if (e.getActionCommand().equals("Зберегти")) {
             saveFile();
         }
     }
@@ -78,7 +78,7 @@ public class TextEditor extends JFrame implements ActionListener {
             }
 
             // Виведення повідомлення про успішне збереження
-            JOptionPane.showMessageDialog(this, "File and copies saved successfully!");
+            JOptionPane.showMessageDialog(this, "Файл і копії успішно збережено!");
         }
     }
 
@@ -103,7 +103,7 @@ public class TextEditor extends JFrame implements ActionListener {
             writer.write(textArea.getText());
             writer.close();
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Error saving original file: " + e.getMessage());
+            JOptionPane.showMessageDialog(this, "Помилка збереження оригінального файлу: " + e.getMessage());
         }
     }
 
@@ -113,7 +113,7 @@ public class TextEditor extends JFrame implements ActionListener {
     public static void main(String[] args) {
         // Запуск головного вікна у потоці Swing
         SwingUtilities.invokeLater(() -> {
-            TextEditor editor = new TextEditor();
+            Lab7 editor = new Lab7();
             editor.setVisible(true);
         });
     }
